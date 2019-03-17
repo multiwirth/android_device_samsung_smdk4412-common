@@ -1,9 +1,5 @@
 
 
-#============= dex2oat ==============
-allow dex2oat sysfs_cpuinfo:dir { open read search };
-allow dex2oat sysfs_cpuinfo:file { getattr open read };
-
 #============= glgps ==============
 allow glgps devpts:chr_file { read write };
 #allow glgps glgps_exec:file execmod;

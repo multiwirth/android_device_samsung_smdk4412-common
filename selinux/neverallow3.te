@@ -10,9 +10,6 @@ allow cameraserver sdcardfs:dir search;
 #============= init ==============
 allow init radioreset:process noatsecure;
 
-#============= installd ==============
-allow installd dex2oat:process noatsecure;
-
 #============= radioreset ==============
 allow radioreset shell_exec:file entrypoint;
 
