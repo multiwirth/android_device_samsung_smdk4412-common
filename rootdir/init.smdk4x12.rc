@@ -1,4 +1,4 @@
-﻿# Init for devices built on Samsung SMDK4412 platform
+# Init for devices built on Samsung SMDK4412 platform
 
 import /init.target.rc
 import /init.smdk4x12.usb.rc
@@ -510,7 +510,7 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 on boot
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    #mount debugfs /sys/kernel/debug /sys/kernel/debug
 
     setprop ro.build.product smdk4x12
     setprop ro.product.device smdk4x12
