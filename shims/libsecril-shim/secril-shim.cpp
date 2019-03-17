@@ -1,3 +1,4 @@
+#pragma clang diagnostic ignored "-Wimplicit-fallthrough"
 #include "secril-shim.h"
 
 #define ATOI_NULL_HANDLED(x) (x ? atoi(x) : 0)
