@@ -33,7 +33,6 @@
 
 extern "C" {
 
-extern uint32_t android_get_application_target_sdk_version();
 extern void android_set_application_target_sdk_version(uint32_t target);
 
 int Pthread_join(pthread_t t, void** return_value) {
