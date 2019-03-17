@@ -181,6 +181,9 @@ BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
 
 SELINUX_IGNORE_NEVERALLOWS := true
 
+BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_PHONY_TARGETS := true
+
 # Override healthd HAL
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.exynos4
 
