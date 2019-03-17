@@ -50,9 +50,6 @@ include $(CLEAR_VARS)
 ifeq ($(strip $(BOARD_CHARGER_NO_UI)),true)
 LOCAL_CHARGER_NO_UI := true
 endif
-ifdef BRILLO
-LOCAL_CHARGER_NO_UI := true
-endif
 
 LOCAL_SRC_FILES := \
     charger.cpp \
@@ -74,6 +71,7 @@ CHARGER_STATIC_LIBRARIES := \
     android.hardware.health@2.0 \
     android.hardware.health@1.0 \
     android.hardware.health@1.0-convert \
+    libbinderthreadstate \
     libhidltransport \
     libhidlbase \
     libhwbinder_noltopgo \
@@ -85,6 +83,8 @@ CHARGER_STATIC_LIBRARIES := \
     libbase \
     libutils \
     libcutils \
+    libjsoncpp \
+    libprocessgroup \
     liblog \
     libm \
     libc \
