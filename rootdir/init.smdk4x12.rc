@@ -18,6 +18,8 @@ on fs
     write /sys/class/android_usb/android0/f_ffs/aliases adb
 
     setprop sys.usb.ffs.aio_compat 1
+    setprop persist.adb.nonblocking_ffs 0
+    setprop ro.adb.nonblocking_ffs 0
 
     mkdir /preload
     mount_all /fstab.smdk4x12
