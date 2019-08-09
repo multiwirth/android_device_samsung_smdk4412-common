@@ -36,7 +36,7 @@ extern "C" {
 extern void android_set_application_target_sdk_version(uint32_t target);
 
 int Pthread_join(pthread_t t, void** return_value) {
-	android_set_application_target_sdk_version(__ANDROID_API_N_MR1__);
+	//android_set_application_target_sdk_version(__ANDROID_API_N_MR1__);
 	return pthread_join(t, return_value);
 }
 
