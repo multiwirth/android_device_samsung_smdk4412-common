@@ -20,6 +20,7 @@ DEVICE_PATH := device/samsung/smdk4412-common
 # by BoardConfigVendor.mk
 USE_CAMERA_STUB := false
 BOARD_USES_GENERIC_AUDIO := false
+USE_XML_AUDIO_POLICY_CONF := 1
 
 TARGET_BOOTANIMATION_PRELOAD := true
 
