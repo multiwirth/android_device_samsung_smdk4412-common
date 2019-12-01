@@ -376,6 +376,8 @@ static void onRequestShim(int request, void *data, size_t datalen, RIL_Token t)
 				origRilFunctions->onRequest(request, data, datalen, t);
 				return;
 			}
+			onRequestUnsupportedRequest(request, data, datalen, t);
+			return;
 		/* The following requests were introduced post-4.3. */
 		case RIL_REQUEST_SIM_TRANSMIT_APDU_BASIC:
 		case RIL_REQUEST_SIM_OPEN_CHANNEL: /* !!! */
