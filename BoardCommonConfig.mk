@@ -55,9 +55,6 @@ BOARD_KERNEL_PAGESIZE := 2048
 #TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 LZMA_RAMDISK_TARGETS := recovery
 
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/hw/rild=19
-
 TARGET_LD_SHIM_LIBS := \
     /system/lib/libsuspend.so|libsuspend-shim.so \
     /system/lib/libandroid_servers.so|libsuspend-shim.so
@@ -118,12 +115,7 @@ EXTENDED_FONT_FOOTPRINT := true
 TARGET_USES_LOGD := false
 
 # RIL
-BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
-# RIL
-BOARD_PROVIDES_LIBRIL := true
-BOARD_MODEM_TYPE := xmm6262
 TARGET_SPECIFIC_HEADER_PATH += device/samsung/smdk4412-common/include
-BOARD_RIL_CLASS := ../../../device/samsung/i9300/ril
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -139,9 +131,6 @@ WIFI_DRIVER_FW_PATH_AP           := "/system/etc/wifi/bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/wifi/bcmdhd_p2p.bin"
 WIFI_BAND                        := 802_11_ABG
 BOARD_HAVE_SAMSUNG_WIFI          := true
-
-# Network Routing
-TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
