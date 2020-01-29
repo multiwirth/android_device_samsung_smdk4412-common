@@ -163,20 +163,6 @@ static void onRequestDeviceIdentity(int request, void *data, size_t datalen, RIL
 	onRequestCompleteDeviceIdentity(t, (gotIMEI && gotIMEISV) ? RIL_E_SUCCESS : RIL_E_GENERIC_FAILURE);
 }
 
-static bool onRequestEnterSimPin(int request, void *data, size_t datalen, RIL_Token t) {
-	int length = (int)datalen/ sizeof(char *);
-	if (length == 2) {
-		char **field = (char **) data;
-		char *pin = field[0];
-		if (pin == NULL) {
-			RLOGD("%s: got request %s: Simulating remaining attempts of %d\n", __FUNCTION__, requestToString(request), simPinAttempts);
-			rilEnv->OnRequestComplete(t, RIL_E_SUCCESS, &simPinAttempts, sizeof(simPinAttempts));
-			return true;
-		}
-	}
-	return false;
-}
-
 static void onRequestUnsupportedRequest(int request, void *data, size_t datalen, RIL_Token t) {
 	RequestInfo *pRI = (RequestInfo *)t;
 	if (pRI != NULL && pRI->pCI != NULL) {
@@ -356,11 +342,9 @@ static void onRequestShim(int request, void *data, size_t datalen, RIL_Token t)
 			origRilFunctions->onRequest(RIL_REQUEST_SEND_SMS, data, datalen, t);
 			return;
 		case RIL_REQUEST_ENTER_SIM_PIN:
-			if (!onRequestEnterSimPin(request, data, datalen, t)) {
-				RLOGD("%s: got request %s: Forwarded to RIL.\n", __FUNCTION__, requestToString(request));
-				origRilFunctions->onRequest(request, data, datalen, t);
-				return;
-			}
+			RLOGD("%s: got request %s: Simulating remaining attempts of %d\n", __FUNCTION__, requestToString(request), simPinAttempts);
+			rilEnv->OnRequestComplete(t, RIL_E_SUCCESS, &simPinAttempts, sizeof(simPinAttempts));
+			return;
 		/* The following requests were introduced post-4.3. */
 		case RIL_REQUEST_SIM_TRANSMIT_APDU_BASIC:
 		case RIL_REQUEST_SIM_OPEN_CHANNEL: /* !!! */
