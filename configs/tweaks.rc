@@ -7,12 +7,11 @@
 # Based on init.d script written by darkened_sky
 
 on property:sys.boot_completed=1
-    write /sys/module/leds_an30259a/parameters/led_switch 1
-    setprop sys.power.cpufreq_max_limit 1200000
+    # write /sys/module/leds_an30259a/parameters/led_switch 1
 
     #------BOEFFLA SOUND 1.6.7 (by Lord Boeffla)------#
     #Enable Boeffla sound
-    write /sys/class/misc/boeffla_sound/boeffla_sound 1
+    #write /sys/class/misc/boeffla_sound/boeffla_sound 1
 
     #Microphone volume in-call
     #This setting allows you to control the microphones sensitivity for phone calls (only)
