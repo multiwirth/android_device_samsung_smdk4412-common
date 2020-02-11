@@ -184,9 +184,6 @@ endif
 # SELinux
 BOARD_SEPOLICY_DIRS += device/samsung/smdk4412-common/selinux
 
-# System as root
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-
 # Charging mode
 BOARD_BATTERY_DEVICE_NAME := "battery"
 BOARD_CHARGER_ENABLE_SUSPEND := true
