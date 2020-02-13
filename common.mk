@@ -108,7 +108,7 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl-legacy \
     android.hardware.sensors@1.0-impl \
     android.hardware.gnss@1.0-impl \
-    android.hardware.gnss@1.0-service \
+    android.hardware.gnss@1.0-service.exynos4 \
     libfimc \
     libfimg \
     libhwconverter \
