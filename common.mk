@@ -44,10 +44,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
 
-# HIDL
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/manifest.xml:system/vendor/manifest.xml
-
 # Camera FW
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/80cfw:system/etc/init.d/80cfw
@@ -130,13 +126,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
-# Usb
+# Touch
 PRODUCT_PACKAGES += \
-	android.hardware.usb@1.0-impl \
-	android.hardware.usb@1.0-service
+    vendor.lineage.touch@1.0-service.samsung
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
+# Treble
+# Include vndk/vndk-sp/ll-ndk modules
+PRODUCT_PACKAGES += \
+    vndk_package
 
 # MFC API
 PRODUCT_PACKAGES += \
@@ -154,6 +151,9 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.AVC.Encoder \
     libOMX.SEC.M4V.Encoder
 #   libOMX.SEC.VP8.Decoder
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.ccodec=0 \
