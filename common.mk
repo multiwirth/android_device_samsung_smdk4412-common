@@ -30,7 +30,7 @@ PRODUCT_COPY_FILES := \
 
 # init.d
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tweaks.rc:system/vendor/etc/init/tweaks.rc
+    $(LOCAL_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -46,7 +46,7 @@ PRODUCT_COPY_FILES += \
 
 # HIDL
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/manifest.xml:system/vendor/manifest.xml
+    $(COMMON_PATH)/manifest.xml:vendor/manifest.xml
 
 # Camera FW
 PRODUCT_COPY_FILES += \
@@ -64,8 +64,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RIL subscription workaround
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/restart_rild.sh:system/vendor/bin/restart_rild.sh \
-    $(LOCAL_PATH)/configs/rild_restart.rc:system/vendor/etc/init/rild_restart.rc
+    $(LOCAL_PATH)/configs/restart_rild.sh:vendor/bin/restart_rild.sh \
+    $(LOCAL_PATH)/configs/rild_restart.rc:vendor/etc/init/rild_restart.rc
 
 # Gps
 PRODUCT_COPY_FILES += \
