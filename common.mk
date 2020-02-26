@@ -71,6 +71,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps.conf:system/etc/gps.conf
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
@@ -88,6 +93,7 @@ PRODUCT_PACKAGES += \
     AdvancedDisplay \
     android.hardware.light@2.0-service.samsung \
     vendor.lineage.livedisplay@2.0-service.samsung-exynos \
+    android.hardware.configstore@1.0-service \
     android.hardware.graphics.allocator@2.0-impl-exynos4 \
     android.hardware.graphics.mapper@2.0-impl-exynos4 \
     android.hardware.graphics.composer@2.1-impl \
