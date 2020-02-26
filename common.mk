@@ -148,6 +148,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/manifest.xml:/vendor/manifest.xml \
     $(COMMON_PATH)/compatibility_matrix.xml:/vendor/compatibility_matrix.xml
+    $(COMMON_PATH)/configs/ld.config.vndk_lite.txt:/system/etc/ld.config.vndk_lite.txt
 
 
 # MFC API
