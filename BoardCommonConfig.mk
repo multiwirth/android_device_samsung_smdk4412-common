@@ -61,17 +61,17 @@ BOARD_KERNEL_PAGESIZE := 2048
 LZMA_RAMDISK_TARGETS := recovery
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/hw/rild=19
+    /vendor/bin/hw/rild=19
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /vendor/bin/hw/rild=22 \
-    /system/vendor/lib/libsec-ril.so=22 \
+    /vendor/lib/libsec-ril.so=22 \
     /system/lib/libsecnativefeature.so=22 \
     /system/lib/libomission_avoidance.so=22 \
     /system/lib/libfactoryutil.so=22 \
-    /system/vendor/lib/libakm.so=22 \
-    /system/vendor/lib/libsecril-client.so=22 \
-    /system/vendor/lib/hw/gps.exynos4.vendor.so=22
+    /vendor/lib/libakm.so=22 \
+    /vendor/lib/libsecril-client.so=22 \
+    /vendor/lib/hw/gps.exynos4.vendor.so=22
 
 WITH_DEXPREOPT := true
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
@@ -85,6 +85,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736
 BOARD_VENDORIMAGE_PARTITION_SIZE := 587202560
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USES_VENDORIMAGE := true
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12381585408
 BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_ROOT_EXTRA_FOLDERS := efs misc preload

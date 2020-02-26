@@ -30,7 +30,7 @@ PRODUCT_COPY_FILES := \
 
 # init.d
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/tweaks.rc:system/vendor/etc/init/tweaks.rc
+    $(LOCAL_PATH)/configs/tweaks.rc:vendor/etc/init/tweaks.rc
 
 # Audio
 PRODUCT_COPY_FILES += \
