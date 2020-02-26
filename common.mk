@@ -60,12 +60,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RIL subscription workaround
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/restart_rild.sh:system/vendor/bin/restart_rild.sh \
-    $(LOCAL_PATH)/configs/rild_restart.rc:system/vendor/etc/init/rild_restart.rc
+    $(LOCAL_PATH)/configs/restart_rild.sh:vendor/bin/restart_rild.sh \
+    $(LOCAL_PATH)/configs/rild_restart.rc:vendor/etc/init/rild_restart.rc
 
 # Gps
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps.conf:system/etc/gps.conf
+
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
+
+
 
 # USB
 PRODUCT_PACKAGES += \
@@ -84,6 +91,7 @@ PRODUCT_PACKAGES += \
     AdvancedDisplay \
     android.hardware.light@2.0-service.samsung \
     vendor.lineage.livedisplay@2.0-service.samsung-exynos \
+    android.hardware.configstore@1.0-service \
     android.hardware.graphics.allocator@2.0-impl-exynos4 \
     android.hardware.graphics.mapper@2.0-impl-exynos4 \
     android.hardware.graphics.composer@2.1-impl \
@@ -103,9 +111,9 @@ PRODUCT_PACKAGES += \
     libMali \
     libEGL_mali \
     gCam \
-    android.hardware.camera.provider@2.4-impl-legacy.exynos4 \
+    android.hardware.camera.provider@2.4-impl-exynos4 \
     android.hardware.camera.provider@2.4-service \
-    camera.device@1.0-impl-legacy.exynos4 \
+    camera.device@1.0-impl-exynos4 \
     android.hardware.sensors@1.0-impl \
     android.hardware.gnss@1.0-impl \
     android.hardware.gnss@1.0-service.exynos4 \
@@ -133,8 +141,14 @@ PRODUCT_PACKAGES += \
 
 # Treble
 # Include vndk/vndk-sp/ll-ndk modules
-PRODUCT_PACKAGES += \
-    vndk_package
+#PRODUCT_PACKAGES += \
+#    vndk_package
+
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/manifest.xml:/vendor/manifest.xml \
+    $(COMMON_PATH)/compatibility_matrix.xml:/vendor/compatibility_matrix.xml
+
 
 # MFC API
 PRODUCT_PACKAGES += \
