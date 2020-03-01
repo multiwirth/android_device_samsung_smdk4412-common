@@ -92,6 +92,7 @@ BOARD_ROOT_EXTRA_FOLDERS := efs misc preload
 BOARD_ROOT_EXTRA_SYMLINKS := /data/tombstones:/tombstones
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_COPY_OUT_VENDOR := vendor
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Hardware tunables
 BOARD_HARDWARE_CLASS := hardware/samsung/lineagehw \
@@ -210,3 +211,8 @@ DEXPREOPT_USE_APEX_IMAGE := false
 
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
+
+# Treble
+BOARD_VNDK_VERSION := current
+BOARD_VNDK_RUNTIME_DISABLE := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true

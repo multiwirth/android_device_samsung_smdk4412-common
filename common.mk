@@ -18,6 +18,9 @@ COMMON_PATH := device/samsung/smdk4412-common
 
 DEVICE_PACKAGE_OVERLAYS := $(COMMON_PATH)/overlay
 
+# Vendor properties
+-include $(LOCAL_PATH)/vendor_prop.mk
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Init files
@@ -140,6 +143,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	android.hardware.usb@1.0-impl \
 	android.hardware.usb@1.0-service
+
+# VNDK
+PRODUCT_PACKAGES += \
+    vndk_package \
+    libstdc++.vendor
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mediaserver.rc:system/etc/init/mediaserver.rc
