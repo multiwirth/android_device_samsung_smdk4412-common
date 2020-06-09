@@ -47,3 +47,4 @@ vendor/firmware/SlimISP_ZH.bin
 vendor/firmware/SlimISP_ZK.bin
 vendor/firmware/SlimISP_ZM.bin
 vendor/lib/mediadrm/libwvdrmengine.so|8d8f13b2b20db3fdeeca94fa03063d0bf5597718
+vendor/bin/glgps
