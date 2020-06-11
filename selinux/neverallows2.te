@@ -1,10 +1,3 @@
-
-
-#============= glgps ==============
-allow glgps devpts:chr_file { read write };
-#allow glgps glgps_exec:file execmod;
-allow glgps self:capability dac_override;
-
 #============= hal_light_default ==============
 allow hal_light_default sysfs:file { open write };
 
