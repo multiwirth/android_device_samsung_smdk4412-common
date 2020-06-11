@@ -37,7 +37,10 @@
 /sys/devices/platform/bcm4330_bluetooth/rfkill/rfkill0/state     u:object_r:sysfs_bluetooth_writable:s0
 
 # GPS
-#/dev/ttySAC1                                                     u:object_r:gps_device:s0
+/vendor/bin/glgps		                                  u:object_r:gpsd_exec:s0
+/dev/ttySAC1                                                     u:object_r:gps_device:s0
+/dev/socket/gps                                                  u:object_r:gps_socket:s0
+/data/gps(/.*)?                                                  u:object_r:gps_data_file:s0
 
 # Sensors
 /dev/akm8975                                                     u:object_r:sensors_device:s0
@@ -59,7 +62,6 @@
 /system/bin/cbd                                                  u:object_r:cpboot-daemon_exec:s0
 /system/vendor/bin/macloader                                     u:object_r:macloader_exec:s0
 /system/bin/tinyplay                                             u:object_r:tinyplay_exec:s0
-/vendor/bin/glgps                                                u:object_r:glgps_exec:s0
 /system/bin/restart_rild.sh                                      u:object_r:radioreset_exec:s0
 
 /dev/exynos-mem							 u:object_r:video_device:s0
