@@ -12,7 +12,6 @@ static const struct RIL_Env *rilEnv;
 
 /* Response data for RIL_REQUEST_VOICE_REGISTRATION_STATE */
 static const int VOICE_REGSTATE_SIZE = 15 * sizeof(char *);
-static char *voiceRegStateResponse[VOICE_REGSTATE_SIZE];
 
 /* Store voice radio technology */
 static int voiceRadioTechnology = -1;
@@ -36,14 +35,14 @@ static bool inIMEISVRequest = false;
 static int requestForIMEI = 0;
 static int requestForIMEISV = 0;
 
+/* Response data for RIL_REQUEST_GET_CELL_INFO_LIST */
+static int wcdmaLac = -1;
+static int wcdmaCid = -1;
+static int gsmLac = -1;
+static int gsmCid = -1;
+
 static bool onRequestSpoofUnsupportedRequest(int request, void *data, size_t datalen, RIL_Token t);
 static void onRequestDeviceIdentity(int request, RIL_Token t);
-
-
-/* Response data for RIL_REQUEST_GET_CELL_INFO_LIST */
-static RIL_CellInfo_v12 cellInfoWCDMA;
-static RIL_CellInfo_v12 cellInfoGSM;
-static RIL_CellInfo_v12 cellInfoList[2];
 
 static void onRequestDial(int request, void *data, RIL_Token t) {
 	RIL_Dial dial;
@@ -91,14 +90,22 @@ static void OnRequestGetCellInfoList(int request, void *data, size_t datalen, RI
 		requestToString(request),
 		data, datalen);
 
+	RIL_CellInfo_v12 cellInfoWCDMA;
+	RIL_CellInfo_v12 cellInfoGSM;
+	RIL_CellInfo_v12 cellInfoList[2];
+
 	cellInfoWCDMA.cellInfoType = RIL_CELL_INFO_TYPE_WCDMA;
 	cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.mcc = -1;
 	cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.mnc = -1;
 	cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.psc = -1;
+	cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.lac = wcdmaLac;
+	cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.cid = wcdmaLac;
 
 	cellInfoGSM.cellInfoType = RIL_CELL_INFO_TYPE_GSM;
 	cellInfoGSM.CellInfo.gsm.cellIdentityGsm.mcc = -1;
 	cellInfoGSM.CellInfo.gsm.cellIdentityGsm.mnc = -1;
+	cellInfoGSM.CellInfo.gsm.cellIdentityGsm.lac = gsmLac;
+	cellInfoGSM.CellInfo.gsm.cellIdentityGsm.cid = gsmCid;
 
 	if (cellInfoGSM.CellInfo.gsm.cellIdentityGsm.lac > -1 &&
 	    cellInfoGSM.CellInfo.gsm.cellIdentityGsm.cid > -1) {
@@ -448,17 +455,18 @@ static void onCompleteRequestGetSimStatus(RIL_Token t, RIL_Errno e, void *respon
 
 static void onRequestCompleteVoiceRegistrationState(RIL_Token t, RIL_Errno e, void *response, size_t responselen) {
 	char **resp = (char **) response;
-        char radioTechUmts = '3';
+	char radioTechUmts = '3';
+	char *voiceRegStateResponse[VOICE_REGSTATE_SIZE];
 	memset(voiceRegStateResponse, 0, VOICE_REGSTATE_SIZE);
 	for (int index = 0; index < (int)responselen; index++) {
 		voiceRegStateResponse[index] = resp[index];
 		switch (index) {
 			case 1: {
-				cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.lac = atoi(voiceRegStateResponse[index]);
+				wcdmaLac = atoi(voiceRegStateResponse[index]);
 				break;
 			}
 			case 2: {
-				cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.cid = atoi(voiceRegStateResponse[index]);
+				wcdmaCid = atoi(voiceRegStateResponse[index]);
 				break;
 			}
 			case 3:	{
@@ -485,8 +493,8 @@ static void onRequestCompleteDataRegistrationState(RIL_Token t, RIL_Errno e, voi
 					__FUNCTION__,
 					resp[1],
 					resp[2]);
-				cellInfoGSM.CellInfo.gsm.cellIdentityGsm.lac = atoi(resp[1]);
-				cellInfoGSM.CellInfo.gsm.cellIdentityGsm.cid = atoi(resp[2]);
+				gsmLac = atoi(resp[1]);
+				gsmCid = atoi(resp[2]);
 				break;
 			}
 			case RIL_CELL_INFO_TYPE_WCDMA: {
@@ -494,10 +502,10 @@ static void onRequestCompleteDataRegistrationState(RIL_Token t, RIL_Errno e, voi
 					__FUNCTION__,
 					resp[1],
 					resp[2]);
-				cellInfoGSM.CellInfo.gsm.cellIdentityGsm.lac = -1;
-				cellInfoGSM.CellInfo.gsm.cellIdentityGsm.cid = -1;
-				cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.lac = atoi(resp[1]);
-				cellInfoWCDMA.CellInfo.wcdma.cellIdentityWcdma.cid = atoi(resp[2]);
+				gsmLac = -1;
+				gsmCid = -1;
+				wcdmaLac = atoi(resp[1]);
+				wcdmaCid = atoi(resp[2]);
 				break;
 			}
 			default:
