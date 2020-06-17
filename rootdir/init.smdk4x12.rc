@@ -503,6 +503,9 @@ on post-fs-data
     # Set indication (checked by vold) that we have finished this action
     setprop vold.post_fs_data_done 1
 
+    # Persistent logcat
+    mkdir /data/.logs 0775 system log
+
 on boot
     #mount debugfs /sys/kernel/debug /sys/kernel/debug
 
@@ -595,3 +598,11 @@ service bootsnd /system/bin/tinyplay /system/etc/sound/silence.wav -D 0 -d 0 -p 
     group audio
     oneshot
     seclabel u:r:tinyplay:s0
+
+service persistentLogging /system/bin/logcat -b all -r 1024 -n 9 -v threadTime -f /data/.logs/log
+    user system
+    group system log
+    disabled
+
+on property:persist.logcat.enabled=1
+	start persistentLogging
