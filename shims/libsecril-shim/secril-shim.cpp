@@ -67,20 +67,14 @@ static int
 decodeVoiceRadioTechnology (RIL_RadioState radioState) {
     switch (radioState) {
         case RADIO_STATE_SIM_NOT_READY:
-        [[fallthrough]];
         case RADIO_STATE_SIM_LOCKED_OR_ABSENT:
-        [[fallthrough]];
         case RADIO_STATE_SIM_READY:
             return RADIO_TECH_UMTS;
 
         case RADIO_STATE_RUIM_NOT_READY:
-        [[fallthrough]];
         case RADIO_STATE_RUIM_READY:
-        [[fallthrough]];
         case RADIO_STATE_RUIM_LOCKED_OR_ABSENT:
-        [[fallthrough]];
         case RADIO_STATE_NV_NOT_READY:
-        [[fallthrough]];
         case RADIO_STATE_NV_READY:
             return RADIO_TECH_1xRTT;
 
@@ -132,20 +126,14 @@ static int
 decodeCdmaSubscriptionSource (RIL_RadioState radioState) {
     switch (radioState) {
         case RADIO_STATE_SIM_NOT_READY:
-        [[fallthrough]];
         case RADIO_STATE_SIM_LOCKED_OR_ABSENT:
-        [[fallthrough]];
         case RADIO_STATE_SIM_READY:
-        [[fallthrough]];
         case RADIO_STATE_RUIM_NOT_READY:
-        [[fallthrough]];
         case RADIO_STATE_RUIM_READY:
-        [[fallthrough]];
         case RADIO_STATE_RUIM_LOCKED_OR_ABSENT:
             return CDMA_SUBSCRIPTION_SOURCE_RUIM_SIM;
 
         case RADIO_STATE_NV_NOT_READY:
-        [[fallthrough]];
         case RADIO_STATE_NV_READY:
             return CDMA_SUBSCRIPTION_SOURCE_NV;
 
@@ -219,17 +207,11 @@ static void onRequestUnsupportedRequest(int request, void *data, size_t datalen,
 static bool is3gpp2(int radioTech) {
     switch (radioTech) {
         case RADIO_TECH_IS95A:
-        [[fallthrough]];
         case RADIO_TECH_IS95B:
-        [[fallthrough]];
         case RADIO_TECH_1xRTT:
-        [[fallthrough]];
         case RADIO_TECH_EVDO_0:
-        [[fallthrough]];
         case RADIO_TECH_EVDO_A:
-        [[fallthrough]];
         case RADIO_TECH_EVDO_B:
-        [[fallthrough]];
         case RADIO_TECH_EHRPD:
             return true;
         default:
@@ -242,25 +224,19 @@ decodeSimStatus (RIL_RadioState radioState) {
    switch (radioState) {
        case RADIO_STATE_SIM_NOT_READY:
            RLOGE("%s: radioState=RADIO_STATE_SIM_NOT_READY", __func__);
-           return -1;
        case RADIO_STATE_RUIM_NOT_READY:
            RLOGE("%s: radioState=RADIO_STATE_RUIM_NOT_READY", __func__);
-           return -1;
        case RADIO_STATE_NV_NOT_READY:
            RLOGE("%s: radioState=RADIO_STATE_NV_NOT_READY", __func__);
-           return -1;
        case RADIO_STATE_NV_READY:
            RLOGE("%s: radioState=RADIO_STATE_NV_READY", __func__);
            return -1;
        case RADIO_STATE_SIM_LOCKED_OR_ABSENT:
            RLOGE("%s: radioState=RADIO_STATE_SIM_LOCKED_OR_ABSENT", __func__);
-           return radioState;
        case RADIO_STATE_SIM_READY:
            RLOGE("%s: radioState=RADIO_STATE_SIM_READY", __func__);
-           return radioState;
        case RADIO_STATE_RUIM_READY:
            RLOGE("%s: radioState=RADIO_STATE_RUIM_READY", __func__);
-           return radioState;
        case RADIO_STATE_RUIM_LOCKED_OR_ABSENT:
            RLOGE("%s: radioState=RADIO_STATE_RUIM_LOCKED_OR_ABSENT", __func__);
            return radioState;
@@ -386,46 +362,26 @@ static void onRequestShim(int request, void *data, size_t datalen, RIL_Token t)
 				origRilFunctions->onRequest(request, data, datalen, t);
 				return;
 			}
-			[[fallthrough]];
 		/* The following requests were introduced post-4.3. */
 		case RIL_REQUEST_SIM_TRANSMIT_APDU_BASIC:
-		[[fallthrough]];
 		case RIL_REQUEST_SIM_OPEN_CHANNEL: /* !!! */
-		[[fallthrough]];
 		case RIL_REQUEST_SIM_CLOSE_CHANNEL:
-		[[fallthrough]];
 		case RIL_REQUEST_SIM_TRANSMIT_APDU_CHANNEL:
-		[[fallthrough]];
 		case RIL_REQUEST_NV_READ_ITEM:
-		[[fallthrough]];
 		case RIL_REQUEST_NV_WRITE_ITEM:
-		[[fallthrough]];
 		case RIL_REQUEST_NV_WRITE_CDMA_PRL:
-		[[fallthrough]];
 		case RIL_REQUEST_NV_RESET_CONFIG:
-		[[fallthrough]];
 		case RIL_REQUEST_SET_UICC_SUBSCRIPTION:
-		[[fallthrough]];
 		case RIL_REQUEST_ALLOW_DATA:
-		[[fallthrough]];
 		case RIL_REQUEST_GET_HARDWARE_CONFIG:
-		[[fallthrough]];
 		case RIL_REQUEST_SIM_AUTHENTICATION:
-		[[fallthrough]];
 		case RIL_REQUEST_GET_DC_RT_INFO:
-		[[fallthrough]];
 		case RIL_REQUEST_SET_DC_RT_INFO_RATE:
-		[[fallthrough]];
 		case RIL_REQUEST_SET_DATA_PROFILE:
-		[[fallthrough]];
 		case RIL_REQUEST_SHUTDOWN: /* TODO: Is there something we can do for RIL_REQUEST_SHUTDOWN ? */
-		[[fallthrough]];
 		case RIL_REQUEST_SET_RADIO_CAPABILITY:
-		[[fallthrough]];
 		case RIL_REQUEST_START_LCE:
-		[[fallthrough]];
 		case RIL_REQUEST_STOP_LCE:
-		[[fallthrough]];
 		case RIL_REQUEST_PULL_LCEDATA:
 			onRequestUnsupportedRequest(request, data, datalen, t);
 			return;
@@ -671,7 +627,6 @@ static void onRequestCompleteShim(RIL_Token t, RIL_Errno e, void *response, size
 			}
 			break;
 		case RIL_REQUEST_DATA_CALL_LIST:
-		[[fallthrough]];
 		case RIL_REQUEST_SETUP_DATA_CALL:
 			/* According to the Samsung RIL, the addresses are the gateways?
 			 * This fixes mobile data. */
