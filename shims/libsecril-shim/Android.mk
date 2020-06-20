@@ -27,5 +27,6 @@ LOCAL_CFLAGS += -DMDM9X35_MODEM
 endif
 
 LOCAL_MODULE := libsecril-shim
+LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
