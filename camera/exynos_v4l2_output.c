@@ -317,7 +317,7 @@ int exynos_v4l2_output(struct exynos_camera *exynos_camera,
 	exynos_camera_yuv_planes(width, height, format, address, (int *) &fimc_buffer.base[0], (int *) &fimc_buffer.base[1], (int *) &fimc_buffer.base[2]);
 
 	rc = exynos_v4l2_s_ctrl(exynos_camera, v4l2_id, V4L2_CID_DST_INFO, (int) &fimc_buffer);
-	if (rc < 0) {
+	if (rc != (int) &fimc_buffer) {
 		ALOGE("%s: Unable to set dst info", __func__);
 		goto error;
 	}
