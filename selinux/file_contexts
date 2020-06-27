@@ -34,7 +34,7 @@
 # Bluetooth
 /dev/ttySAC0                                                     u:object_r:hci_attach_dev:s0
 /efs/bluetooth/bt_addr                                           u:object_r:bluetooth_data_file:s0
-/sys/devices/platform/bcm4330_bluetooth/rfkill/rfkill0/state     u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/platform/bcm433[0-9]_bluetooth/rfkill/rfkill0/state     u:object_r:sysfs_bluetooth_writable:s0
 
 # GPS
 /vendor/bin/glgps		                                  u:object_r:gpsd_exec:s0
