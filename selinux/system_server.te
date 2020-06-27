@@ -22,3 +22,4 @@ allow system_server unlabeled:file unlink;
 allow system_server zygote:process { getpgid setsched };
 unix_socket_connect(system_server, gps, gpsd)
 allow system_server gps_device:chr_file rw_file_perms;
+allow system_server init:binder call;
