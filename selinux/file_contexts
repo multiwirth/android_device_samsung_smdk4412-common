@@ -107,3 +107,7 @@
 # MMC
 /sys/devices/platform/dw_mmc/mmc_host/mmc[0-9]/mmc[0-9]:[0-9]+/block/mmcblk[0](/.*)?  u:object_r:sysfs_mmc:s0
 /sys/devices/platform/s3c-sdhci.[0-9]/mmc_host/mmc[0-9]:/mmc[0]-9:[0-9]+/block/mmcblk[0-9](/.*)? u:object_r:sysfs_mmc:s0
+
+# Wakeup sources
+/sys/kernel/debug/wakeup_sources				u:object_r:debugfs_wakeup_sources:s0
+
