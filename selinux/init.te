@@ -16,5 +16,6 @@ allow init self:capability sys_nice;
 allow init sysfs:lnk_file setattr;
 allow init audio_device:chr_file { ioctl write };
 #allow init vendor_file:file execute_no_trans;
+allow init sysfs_devices_system_cpu:file write;
 
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)
