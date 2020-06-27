@@ -103,3 +103,7 @@
 /data/gps/\.gps\.interface\.pipe\.to_gpsd                        u:object_r:gps_data_file:s0
 /data/gps/\.gps\.interface\.pipe\.to_jni                         u:object_r:gps_data_file:s0
 /data/gps/gldata\.sto                                            u:object_r:gps_data_file:s0
+
+# MMC
+/sys/devices/platform/dw_mmc/mmc_host/mmc[0-9]/mmc[0-9]:[0-9]+/block/mmcblk[0](/.*)?  u:object_r:sysfs_mmc:s0
+/sys/devices/platform/s3c-sdhci.[0-9]/mmc_host/mmc[0-9]:/mmc[0]-9:[0-9]+/block/mmcblk[0-9](/.*)? u:object_r:sysfs_mmc:s0
