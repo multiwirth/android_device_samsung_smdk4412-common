@@ -1,5 +1,3 @@
-allow toolbox sysfs_cpuinfo:dir search;
-allow toolbox sysfs_cpuinfo:file { getattr open read };
 allow toolbox init:fifo_file { getattr write };
 allow toolbox ctl_rildaemon_prop:property_service set;
 allow toolbox radio_prop:property_service set;
