@@ -20,5 +20,7 @@ allow init sysfs_devices_system_cpu:file write;
 allow init gps_data_file:fifo_file write;
 allow init gps_data_file:file lock;
 allow init gps_device:chr_file { getattr ioctl open read write };
+allow init efs_device_file:dir mounton;
+allow init preload_device_file:dir mounton;
 
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)
