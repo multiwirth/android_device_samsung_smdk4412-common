@@ -37,7 +37,7 @@
 /sys/devices/platform/bcm433[0-9]_bluetooth/rfkill/rfkill0/state     u:object_r:sysfs_bluetooth_writable:s0
 
 # GPS
-/vendor/bin/glgps		                                  u:object_r:gpsd_exec:s0
+/(vendor|system/vendor)/bin/glgps                                u:object_r:gpsd_exec:s0
 /dev/ttySAC1                                                     u:object_r:gps_device:s0
 /dev/socket/gps                                                  u:object_r:gps_socket:s0
 /data/gps(/.*)?                                                  u:object_r:gps_data_file:s0
