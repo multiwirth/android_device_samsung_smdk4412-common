@@ -1,0 +1,5 @@
+allow hal_camera_default firmware_exynos:dir search;
+allow hal_camera_default firmware_exynos:file { open read };
+allow hal_camera_default mnt_user_file:dir search;
+allow hal_camera_default storage_file:dir search;
+allow hal_camera_default storage_file:lnk_file read;
