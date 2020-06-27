@@ -13,15 +13,9 @@ allow init storage_file:lnk_file read;
 allow logpersist devpts:chr_file { read write };
 allow logpersist media_rw_data_file:file write;
 allow logpersist sdcardfs:file write;
-allow logpersist sysfs_cpuinfo:dir search;
-allow logpersist sysfs_cpuinfo:file { getattr open read };
 
 #============= system_server ==============
 allow system_server init:unix_stream_socket getopt;
-
-#============= untrusted_app ==============
-allow untrusted_app sysfs_cpuinfo:dir { open read search };
-allow untrusted_app sysfs_cpuinfo:file { open read };
 
 #============= zygote ==============
 allow zygote init:unix_stream_socket { getattr read write };

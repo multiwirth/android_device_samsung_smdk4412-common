@@ -21,8 +21,6 @@ allow rild anr_data_file:file { open read };
 allow servicemanager rild:dir search;
 allow servicemanager rild:process getattr;
 allow servicemanager rild:file { open read };
-allow servicemanager sysfs_cpuinfo:dir search;
-allow servicemanager sysfs_cpuinfo:file { getattr open read };
 
 #============= ueventd ==============
 allow ueventd firmware_exynos:dir search;
@@ -38,13 +36,3 @@ allow hwservicemanager init:process getattr;
 
 #============= nfc ==============
 allow nfc firmware_exynos:dir search;
-
-#============= zygote ==============
-allow zygote sysfs_cpuinfo:dir { open read search };
-allow zygote sysfs_cpuinfo:file { getattr open read };
-
-#============= hal_light_default ==============
-allow hal_light_default sysfs_cpuinfo:dir search;
-allow hal_light_default sysfs_cpuinfo:file { getattr open read };
-
-
