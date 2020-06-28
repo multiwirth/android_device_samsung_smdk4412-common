@@ -1,3 +1,6 @@
 allow ueventd sensors_device:chr_file { relabelfrom relabelto };
 allow ueventd sysfs_display:file { open write };
 allow ueventd wifi_firmware_path:file relabelto;
+allow ueventd proc_slabinfo:dir { open read relabelto search };
+allow ueventd proc_slabinfo:file relabelto;
+allow ueventd proc_slabinfo:lnk_file relabelto;
