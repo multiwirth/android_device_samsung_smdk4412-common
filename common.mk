@@ -54,12 +54,12 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    $(COMMON_PATH)/configs/wpa_supplicant_overlay.conf:system/vendor/etc/wifi/wpa_supplicant_overlay.conf \
+    $(COMMON_PATH)/configs/p2p_supplicant_overlay.conf:system/vendor/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=180 \
+    wifi.supplicant_scan_interval=30 \
     net.tethering.noprovisioning=true
 
 # RIL subscription workaround
@@ -269,6 +269,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
 
 # Include non-opensource parts
 $(call inherit-product, vendor/samsung/smdk4412-common/smdk4412-common-vendor.mk)
+
+# Include Lineage sepolicy for Exynos
+$(call inherit-product, device/lineage/sepolicy/exynos/sepolicy.mk)
+
 
 # Art
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
