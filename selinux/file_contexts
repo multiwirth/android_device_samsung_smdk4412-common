@@ -88,8 +88,6 @@
 
 # CPU
 /sys/devices/system/cpu(/.*)?                                    u:object_r:sysfs_devices_system_cpu:s0
-/sys/power/cpufreq_max_limit                                     u:object_r:sysfs_devices_system_cpu:s0
-/sys/power/cpufreq_min_limit                                     u:object_r:sysfs_devices_system_cpu:s0
 
 # lmkd
 /sys/module/lowmemorykiller(/.*)?                                u:object_r:sysfs_lmkd:s0
@@ -111,3 +109,5 @@
 # Wakeup sources
 /sys/kernel/debug/wakeup_sources				u:object_r:debugfs_wakeup_sources:s0
 
+# Suspend system
+/sys/power(/.*)? 						u:object_r:sysfs_power:s0
