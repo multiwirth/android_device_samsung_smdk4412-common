@@ -165,6 +165,11 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.M4V.Encoder
 #   libOMX.SEC.VP8.Decoder
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
+
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.ccodec=0 \
     media.stagefright.legacyencoder=true \
