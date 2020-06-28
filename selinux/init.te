@@ -15,12 +15,13 @@ allow init sysfs_lmkd:file setattr;
 allow init self:capability sys_nice;
 allow init sysfs:lnk_file setattr;
 allow init audio_device:chr_file { ioctl write };
-#allow init vendor_file:file execute_no_trans;
+allow init vendor_file:file execute_no_trans;
 allow init sysfs_devices_system_cpu:file write;
 allow init gps_data_file:fifo_file write;
 allow init gps_data_file:file lock;
 allow init gps_device:chr_file { getattr ioctl open read write };
 allow init efs_device_file:dir mounton;
 allow init preload_device_file:dir mounton;
-
+allow init hwservicemanager:binder { call transfer };
+allow init sysfs_mmc:file { open setattr write };
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)
