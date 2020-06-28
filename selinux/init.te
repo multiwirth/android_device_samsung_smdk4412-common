@@ -24,4 +24,5 @@ allow init efs_device_file:dir mounton;
 allow init preload_device_file:dir mounton;
 allow init hwservicemanager:binder { call transfer };
 allow init sysfs_mmc:file { open setattr write };
+allow init display_vendor_data_file:lnk_file read;
 domain_auto_trans(init, rootfs, cpboot-daemon, macloader, tinyplay)
