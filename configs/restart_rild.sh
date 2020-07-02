@@ -32,7 +32,7 @@ do_reset_radio() {
 
   if [ "$subId" != "1" ] ; then
     stop ril-daemon
-    sleep 5
+    sleep 12
     start ril-daemon
     setprop gsm.resetcount $(( $resetCount + 1 ))
   fi
