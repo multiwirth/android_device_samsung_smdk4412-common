@@ -1,3 +1,6 @@
+#include <chrono>
+#include <thread>
+
 #include "secril-shim.h"
 #include "secril-sap.h"
 
@@ -705,6 +708,9 @@ const RIL_RadioFunctions* RIL_Init(const struct RIL_Env *env, int argc, char **a
 	shimmedEnv = *env;
 	shimmedEnv.OnRequestComplete = onRequestCompleteShim;
 	shimmedEnv.OnUnsolicitedResponse = onUnsolicitedResponseShim;
+
+	ALOGE("%s: sleep for 12 seconds", __func__);
+	std::this_thread::sleep_for(std::chrono::milliseconds(12000));
 
 	/* Open and Init the original RIL. */
 

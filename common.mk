@@ -56,11 +56,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=180 \
     net.tethering.noprovisioning=true
 
-# RIL subscription workaround
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/restart_rild.sh:system/vendor/bin/restart_rild.sh \
-    $(LOCAL_PATH)/configs/rild_restart.rc:system/vendor/etc/init/rild_restart.rc
-
 # Gps
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/configs/gps.conf:system/etc/gps.conf
