@@ -1,0 +1,1 @@
+allow untrusted_app_25 ion_device:chr_file write;
