@@ -501,7 +501,7 @@ on post-fs-data
     mkdir /data/.logs 0775 system log
 
 on boot
-    #mount debugfs /sys/kernel/debug /sys/kernel/debug
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
 
     setprop ro.build.product smdk4x12
     setprop ro.product.device smdk4x12
