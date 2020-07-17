@@ -10,7 +10,8 @@ allow system_server sysfs_display:file { getattr open read write };
 allow system_server ion_device:chr_file write;
 allow system_server rild:unix_stream_socket connectto;
 allow system_server sensors_device:chr_file { ioctl open read write };
-allow system_server device:chr_file { ioctl open read write };
+#allow system_server device:chr_file { ioctl open read write };
+allow system_server device:chr_file { ioctl };
 allow system_server vendor_file:file execmod;
 #allow system_server default_android_hwservice:hwservice_manager find;
 #allow system_server default_android_service:service_manager { find add };
@@ -19,7 +20,3 @@ allow system_server default_android_service:service_manager { find };
 allow system_server init:fifo_file write;
 allow system_server unlabeled:file unlink;
 allow system_server zygote:process { getpgid setsched };
-unix_socket_connect(system_server, gps, gpsd)
-allow system_server gps_device:chr_file rw_file_perms;
-allow system_server init:binder call;
-allow system_server debugfs:file { getattr open read };
